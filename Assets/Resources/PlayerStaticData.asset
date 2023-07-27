@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: PlayerStaticData
   m_EditorClassIdentifier: 
   speed: 10
+  rotationSpeed: 30

@@ -6,5 +6,6 @@ namespace CodeBase.StaticData
     public class PlayerStaticData : ScriptableObject
     {
         public float speed;
+        public float rotationSpeed;
     }
 }
