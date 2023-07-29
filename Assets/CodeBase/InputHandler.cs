@@ -4,14 +4,15 @@ namespace CodeBase
 {
     public class InputHandler : MonoBehaviour
     {
-        public Vector2 GetMovementVectorNormalized()
+        private PlayerInputActions _inputActions;
+
+        private void Awake()
         {
-            var inputVector = Vector3.zero;
-
-            inputVector.x = Input.GetAxis("Horizontal");
-            inputVector.y = Input.GetAxis("Vertical");
-
-            return inputVector.normalized;
+            _inputActions = new PlayerInputActions();
+            _inputActions.Player.Enable();
         }
+
+        public Vector2 GetMovementVectorNormalized() => 
+            _inputActions.Player.Move.ReadValue<Vector2>().normalized;
     }
 }
