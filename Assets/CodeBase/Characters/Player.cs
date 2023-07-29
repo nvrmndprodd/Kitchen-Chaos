@@ -7,22 +7,18 @@ namespace CodeBase.Characters
     {
         public PlayerStaticData data;
         public PlayerAnimator animator;
+        public InputHandler inputHandler;
         
         private void Update()
         {
-            var inputVector = Vector3.zero;
+            var inputVector = inputHandler.GetMovementVectorNormalized();
+            var direction = new Vector3(inputVector.x, 0f, inputVector.y);
 
-            inputVector.x = Input.GetAxis("Horizontal");
-            inputVector.y = Input.GetAxis("Vertical");
-
-            if (IsNotMoving(inputVector))
+            if (IsNotMoving(direction))
             {
                 animator.StopMoving();
                 return;
             }
-
-            inputVector.Normalize();
-            var direction = new Vector3(inputVector.x, 0f, inputVector.y);
 
             transform.position += (direction * (Time.deltaTime * data.speed));
             transform.forward = Vector3.Slerp(transform.forward, direction, Time.deltaTime * data.rotationSpeed);
