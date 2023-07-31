@@ -1,3 +1,4 @@
+using System;
 using CodeBase.StaticData;
 using UnityEngine;
 
@@ -11,11 +12,21 @@ namespace CodeBase.Characters
         public LayerMask counterLayerMask;
 
         private Vector3 _lastInteractDirection;
-        
+
+        private void Start()
+        {
+            inputHandler.OnInteractAction += OnInteract;
+        }
+
+        private void OnInteract(object sender, EventArgs e)
+        {
+            HandleInteractions();
+        }
+
         private void Update()
         {
             HandleMovement();
-            HandleInteractions();
+            //HandleInteractions();
         }
 
         private void HandleMovement()
@@ -75,6 +86,9 @@ namespace CodeBase.Characters
         {
             var inputVector = inputHandler.GetMovementVectorNormalized();
             var direction = new Vector3(inputVector.x, 0f, inputVector.y);
+            
+            UpdateLastInteractDirection(direction);
+            
             return direction;
         }
 
@@ -83,10 +97,15 @@ namespace CodeBase.Characters
             var inputVector = inputHandler.GetMovementVectorNormalized();
             var direction = new Vector3(inputVector.x, 0f, inputVector.y);
 
-            if (!IsNotMoving(direction)) 
+            return !IsNotMoving(direction) 
+                ? direction 
+                : _lastInteractDirection;
+        }
+
+        private void UpdateLastInteractDirection(Vector3 direction)
+        {
+            if (!IsNotMoving(direction))
                 _lastInteractDirection = direction;
-            
-            return _lastInteractDirection;
         }
 
         private static bool IsNotMoving(Vector3 direction) => 
