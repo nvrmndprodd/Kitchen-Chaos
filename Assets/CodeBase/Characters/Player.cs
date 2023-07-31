@@ -8,24 +8,34 @@ namespace CodeBase.Characters
         public PlayerStaticData data;
         public PlayerAnimator animator;
         public InputHandler inputHandler;
+        public LayerMask counterLayerMask;
+
+        private Vector3 _lastInteractDirection;
         
         private void Update()
         {
-            var inputVector = inputHandler.GetMovementVectorNormalized();
-            var direction = new Vector3(inputVector.x, 0f, inputVector.y);
+            HandleMovement();
+            HandleInteractions();
+        }
+
+        private void HandleMovement()
+        {
+            var direction = GetMoveDirection();
             var acceleration = Time.deltaTime * data.speed;
-            var canMove = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * data.playerHeight, data.playerRadius, direction, acceleration);
+            var canMove = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * data.playerHeight,
+                data.playerRadius, direction, acceleration);
 
             if (IsNotMoving(direction))
             {
                 animator.StopMoving();
                 return;
             }
-            
+
             if (!canMove)
             {
                 var directionX = new Vector3(direction.x, 0, 0).normalized;
-                var canMoveX = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * data.playerHeight, data.playerRadius, directionX, acceleration);
+                var canMoveX = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * data.playerHeight,
+                    data.playerRadius, directionX, acceleration);
 
                 if (canMoveX)
                     direction = directionX;
@@ -41,7 +51,6 @@ namespace CodeBase.Characters
                     else
                         return;
                 }
-
             }
 
             transform.position += direction * acceleration;
@@ -49,7 +58,38 @@ namespace CodeBase.Characters
             animator.StartMoving();
         }
 
-        private static bool IsNotMoving(Vector3 input) => 
-            input.sqrMagnitude <= float.Epsilon;
+        private void HandleInteractions()
+        {
+            var direction = GetMoveDirectionOrLastInteractDirection();
+            const float interactDistance = 2f;
+            if (Physics.Raycast(transform.position, direction, out var hit, interactDistance, counterLayerMask))
+            {
+                if (hit.transform.TryGetComponent<ClearCounter>(out var clearCounter))
+                {
+                    clearCounter.Interact();
+                }
+            }
+        }
+
+        private Vector3 GetMoveDirection()
+        {
+            var inputVector = inputHandler.GetMovementVectorNormalized();
+            var direction = new Vector3(inputVector.x, 0f, inputVector.y);
+            return direction;
+        }
+
+        private Vector3 GetMoveDirectionOrLastInteractDirection()
+        {
+            var inputVector = inputHandler.GetMovementVectorNormalized();
+            var direction = new Vector3(inputVector.x, 0f, inputVector.y);
+
+            if (!IsNotMoving(direction)) 
+                _lastInteractDirection = direction;
+            
+            return _lastInteractDirection;
+        }
+
+        private static bool IsNotMoving(Vector3 direction) => 
+            direction.sqrMagnitude <= float.Epsilon;
     }
 }
