@@ -6,12 +6,29 @@ namespace CodeBase.Characters
 {
     public class Player : MonoBehaviour
     {
+        public static Player Instance { get; private set; }
+        public event EventHandler<OnSelectedCounterChangedEventArgs> OnSelectedCounterChanged;
+
+        public class OnSelectedCounterChangedEventArgs : EventArgs
+        {
+            public ClearCounter selectedCounter;
+        }
+        
         public PlayerStaticData data;
         public PlayerAnimator animator;
         public InputHandler inputHandler;
         public LayerMask counterLayerMask;
 
         private Vector3 _lastInteractDirection;
+        private ClearCounter _selectedCounter;
+
+        private void Awake()
+        {
+            if (Instance != null)
+                Destroy(gameObject);
+
+            Instance = this;
+        }
 
         private void Start()
         {
@@ -20,13 +37,14 @@ namespace CodeBase.Characters
 
         private void OnInteract(object sender, EventArgs e)
         {
-            HandleInteractions();
+            if (_selectedCounter != null) 
+                _selectedCounter.Interact();
         }
 
         private void Update()
         {
             HandleMovement();
-            //HandleInteractions();
+            HandleInteractions();
         }
 
         private void HandleMovement()
@@ -77,8 +95,19 @@ namespace CodeBase.Characters
             {
                 if (hit.transform.TryGetComponent<ClearCounter>(out var clearCounter))
                 {
-                    clearCounter.Interact();
+                    if (clearCounter == _selectedCounter) 
+                        return;
+
+                    UpdateSelectedCounter(clearCounter);
                 }
+                else
+                {
+                    UpdateSelectedCounter(null);
+                }
+            }
+            else
+            {
+                UpdateSelectedCounter(null);
             }
         }
 
@@ -110,5 +139,14 @@ namespace CodeBase.Characters
 
         private static bool IsNotMoving(Vector3 direction) => 
             direction.sqrMagnitude <= float.Epsilon;
+
+        private void UpdateSelectedCounter(ClearCounter counter)
+        {
+            _selectedCounter = counter;
+            OnSelectedCounterChanged?.Invoke(this, new OnSelectedCounterChangedEventArgs()
+            {
+                selectedCounter = _selectedCounter
+            });
+        }
     }
 }
