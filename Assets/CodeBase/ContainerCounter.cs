@@ -1,5 +1,4 @@
-﻿using CodeBase.Characters;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace CodeBase
 {
@@ -7,10 +6,12 @@ namespace CodeBase
     {
         [SerializeField] private ContainerCounterVisual visual;
         
-        public override void Interact(Player player)
+        public override void Interact(IKitchenObjectParent newParent)
         {
+            if (newParent.HasKitchenObject) return;
+            
             var kitchenObject = Instantiate(kitchenObjectData.prefab, counterTopContainer);
-            kitchenObject.SetParent(player);
+            kitchenObject.SetParent(newParent);
             
             visual.StartOpenCloseAnimation();
         }

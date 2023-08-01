@@ -65,6 +65,8 @@ namespace CodeBase.Characters
                 return;
             }
 
+            transform.forward = Vector3.Slerp(transform.forward, direction, Time.deltaTime * data.rotationSpeed);
+            
             if (!canMove)
             {
                 var directionX = new Vector3(direction.x, 0, 0).normalized;
@@ -88,7 +90,6 @@ namespace CodeBase.Characters
             }
 
             transform.position += direction * acceleration;
-            transform.forward = Vector3.Slerp(transform.forward, direction, Time.deltaTime * data.rotationSpeed);
             animator.StartMoving();
         }
 

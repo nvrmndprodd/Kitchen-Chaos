@@ -13,7 +13,7 @@ namespace CodeBase
         public KitchenObject KitchenObject { get; protected set; }
         public bool HasKitchenObject => KitchenObject is not null;
         
-        public abstract void Interact(Player player);
+        public abstract void Interact(IKitchenObjectParent newParent);
 
         public void SetKitchenObject(KitchenObject kitchenObject) => 
             KitchenObject = kitchenObject;
