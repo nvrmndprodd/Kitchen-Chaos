@@ -1,4 +1,5 @@
-﻿using CodeBase.StaticData;
+﻿using CodeBase.Characters;
+using CodeBase.StaticData;
 using UnityEngine;
 
 namespace CodeBase
@@ -10,15 +11,27 @@ namespace CodeBase
 
         private KitchenObject _kitchenObject;
 
-        public void Interact()
-        {
-            if (_kitchenObject is not null) 
-                return;
-            
-            _kitchenObject = Instantiate(kitchenObjectData.prefab, counterTopContainer);
-            _kitchenObject.transform.localPosition = Vector3.zero;
+        public Transform CounterTopContainer => counterTopContainer;
 
-            _kitchenObject.clearCounter = this;
+        public void Interact(Player player)
+        {
+            if (_kitchenObject is null)
+            {
+                _kitchenObject = Instantiate(kitchenObjectData.prefab, counterTopContainer);
+                _kitchenObject.SetCounter(this);
+            }
         }
+
+        public void SetKitchenObject(KitchenObject kitchenObject) => 
+            _kitchenObject = kitchenObject;
+
+        public KitchenObject GetKitchenObject()
+            => _kitchenObject;
+
+        public void ClearKitchenObject() =>
+            _kitchenObject = null;
+
+        public bool HasKitchenObject() => 
+            _kitchenObject is not null;
     }
 }

@@ -38,7 +38,7 @@ namespace CodeBase.Characters
         private void OnInteract(object sender, EventArgs e)
         {
             if (_selectedCounter != null) 
-                _selectedCounter.Interact();
+                _selectedCounter.Interact(this);
         }
 
         private void Update()
