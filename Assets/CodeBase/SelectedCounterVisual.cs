@@ -1,22 +1,19 @@
 ﻿using CodeBase.Characters;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace CodeBase
 {
     public class SelectedCounterVisual : MonoBehaviour
     {
-        [SerializeField] private ClearCounter clearCounter;
-        [SerializeField] private GameObject visualGO;
+        [SerializeField] private BaseCounter counter;
+        [SerializeField] private GameObject[] visualGOs;
         
-        private void Start()
-        {
+        private void Start() =>
             Player.Instance.OnSelectedCounterChanged += OnSelectedCounterChanged;
-        }
 
         private void OnSelectedCounterChanged(object sender, Player.OnSelectedCounterChangedEventArgs e)
         {
-            if (e.selectedCounter == clearCounter)
+            if (e.selectedCounter == counter)
                 Show();
             else
                 Hide();
@@ -24,12 +21,14 @@ namespace CodeBase
 
         private void Show()
         {
-            visualGO.SetActive(true);
+            foreach(var visualGO in visualGOs)
+                visualGO.SetActive(true);
         }
 
         private void Hide()
         {
-            visualGO.SetActive(false);
+            foreach(var visualGO in visualGOs) 
+                visualGO.SetActive(false);
         }
     }
 }

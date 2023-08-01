@@ -11,7 +11,7 @@ namespace CodeBase.Characters
 
         public class OnSelectedCounterChangedEventArgs : EventArgs
         {
-            public ClearCounter selectedCounter;
+            public BaseCounter selectedCounter;
         }
         
         public PlayerStaticData data;
@@ -21,7 +21,7 @@ namespace CodeBase.Characters
         public LayerMask counterLayerMask;
 
         private Vector3 _lastInteractDirection;
-        private ClearCounter _selectedCounter;
+        private BaseCounter _selectedCounter;
 
         public Transform KitchenObjectContainer => kitchenObjectContainer;
         public KitchenObject KitchenObject { get; private set; }
@@ -98,7 +98,7 @@ namespace CodeBase.Characters
             const float interactDistance = 2f;
             if (Physics.Raycast(transform.position, direction, out var hit, interactDistance, counterLayerMask))
             {
-                if (hit.transform.TryGetComponent<ClearCounter>(out var clearCounter))
+                if (hit.transform.TryGetComponent<BaseCounter>(out var clearCounter))
                 {
                     if (clearCounter == _selectedCounter) 
                         return;
@@ -145,7 +145,7 @@ namespace CodeBase.Characters
         private static bool IsNotMoving(Vector3 direction) => 
             direction.sqrMagnitude <= float.Epsilon;
 
-        private void UpdateSelectedCounter(ClearCounter counter)
+        private void UpdateSelectedCounter(BaseCounter counter)
         {
             _selectedCounter = counter;
             OnSelectedCounterChanged?.Invoke(this, new OnSelectedCounterChangedEventArgs()
