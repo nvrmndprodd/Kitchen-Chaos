@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace CodeBase.Characters
 {
-    public class Player : MonoBehaviour
+    public class Player : MonoBehaviour, IKitchenObjectParent
     {
         public static Player Instance { get; private set; }
         public event EventHandler<OnSelectedCounterChangedEventArgs> OnSelectedCounterChanged;
@@ -17,10 +17,15 @@ namespace CodeBase.Characters
         public PlayerStaticData data;
         public PlayerAnimator animator;
         public InputHandler inputHandler;
+        public Transform kitchenObjectContainer;
         public LayerMask counterLayerMask;
 
         private Vector3 _lastInteractDirection;
         private ClearCounter _selectedCounter;
+
+        public Transform KitchenObjectContainer => kitchenObjectContainer;
+        public KitchenObject KitchenObject { get; private set; }
+        public bool HasKitchenObject => KitchenObject != null;
 
         private void Awake()
         {
@@ -148,5 +153,11 @@ namespace CodeBase.Characters
                 selectedCounter = _selectedCounter
             });
         }
+
+        public void SetKitchenObject(KitchenObject kitchenObject) => 
+            KitchenObject = kitchenObject;
+
+        public void ClearKitchenObject() => 
+            KitchenObject = null;
     }
 }

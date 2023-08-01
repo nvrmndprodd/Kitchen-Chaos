@@ -4,34 +4,35 @@ using UnityEngine;
 
 namespace CodeBase
 {
-    public class ClearCounter : MonoBehaviour
+    public class ClearCounter : MonoBehaviour, IKitchenObjectParent
     {
         [SerializeField] private Transform counterTopContainer;
         [SerializeField] private KitchenObjectStaticData kitchenObjectData;
 
-        private KitchenObject _kitchenObject;
+        public KitchenObject KitchenObject { get; private set; }
+        
+        public Transform KitchenObjectContainer => counterTopContainer;
+        public bool HasKitchenObject => KitchenObject is not null;
 
-        public Transform CounterTopContainer => counterTopContainer;
 
         public void Interact(Player player)
         {
-            if (_kitchenObject is null)
+            if (KitchenObject is null)
             {
-                _kitchenObject = Instantiate(kitchenObjectData.prefab, counterTopContainer);
-                _kitchenObject.SetCounter(this);
+                KitchenObject = Instantiate(kitchenObjectData.prefab, counterTopContainer);
+                KitchenObject.SetParent(this);
+            }
+            else
+            {
+                KitchenObject.SetParent(player);
             }
         }
 
         public void SetKitchenObject(KitchenObject kitchenObject) => 
-            _kitchenObject = kitchenObject;
+            KitchenObject = kitchenObject;
 
-        public KitchenObject GetKitchenObject()
-            => _kitchenObject;
 
         public void ClearKitchenObject() =>
-            _kitchenObject = null;
-
-        public bool HasKitchenObject() => 
-            _kitchenObject is not null;
+            KitchenObject = null;
     }
 }

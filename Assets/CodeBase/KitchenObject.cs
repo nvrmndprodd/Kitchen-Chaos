@@ -7,16 +7,16 @@ namespace CodeBase
     {
         [SerializeField] private KitchenObjectStaticData kitchenObjectData;
 
-        public ClearCounter clearCounter;
+        private IKitchenObjectParent _parent;
 
-        public void SetCounter(ClearCounter counter)
+        public void SetParent(IKitchenObjectParent parent)
         {
-            if (clearCounter is not null)
-                clearCounter.ClearKitchenObject();
+            if (_parent is not null)
+                _parent.ClearKitchenObject();
             
-            clearCounter = counter;
-            clearCounter.SetKitchenObject(this);
-            transform.parent = counter.CounterTopContainer;
+            _parent = parent;
+            _parent.SetKitchenObject(this);
+            transform.parent = parent.KitchenObjectContainer;
             transform.localPosition = Vector3.zero;
         }
     }
