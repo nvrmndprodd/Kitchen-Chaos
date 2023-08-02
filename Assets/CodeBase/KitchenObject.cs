@@ -9,6 +9,9 @@ namespace CodeBase
 
         private IKitchenObjectParent _parent;
 
+        public bool CanBeSliced => kitchenObjectData.canBeSliced;
+        public KitchenObjectStaticData SlicedObject => kitchenObjectData.sliced;
+
         public void SetParent(IKitchenObjectParent parent)
         {
             if (_parent is not null)

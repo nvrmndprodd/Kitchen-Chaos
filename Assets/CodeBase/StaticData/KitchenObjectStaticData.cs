@@ -8,5 +8,7 @@ namespace CodeBase.StaticData
         public KitchenObject prefab;
         public Sprite icon;
         public string objectName;
+        public bool canBeSliced;
+        public KitchenObjectStaticData sliced;
     }
 }

@@ -260,27 +260,27 @@ PrefabInstance:
     - target: {fileID: 1618239656158344188, guid: 4610889f6b046fa4c918c91d3b56833e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1618239656158344188, guid: 4610889f6b046fa4c918c91d3b56833e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 10.69
       objectReference: {fileID: 0}
     - target: {fileID: 1618239656158344188, guid: 4610889f6b046fa4c918c91d3b56833e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.0000009536743
       objectReference: {fileID: 0}
     - target: {fileID: 1618239656158344188, guid: 4610889f6b046fa4c918c91d3b56833e,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -6.56
       objectReference: {fileID: 0}
     - target: {fileID: 1618239656158344188, guid: 4610889f6b046fa4c918c91d3b56833e,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1618239656158344188, guid: 4610889f6b046fa4c918c91d3b56833e,
         type: 3}
@@ -290,7 +290,7 @@ PrefabInstance:
     - target: {fileID: 1618239656158344188, guid: 4610889f6b046fa4c918c91d3b56833e,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1618239656158344188, guid: 4610889f6b046fa4c918c91d3b56833e,
         type: 3}
@@ -305,12 +305,17 @@ PrefabInstance:
     - target: {fileID: 1618239656158344188, guid: 4610889f6b046fa4c918c91d3b56833e,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -180
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1618239656158344188, guid: 4610889f6b046fa4c918c91d3b56833e,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6823186856679895672, guid: 4610889f6b046fa4c918c91d3b56833e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
