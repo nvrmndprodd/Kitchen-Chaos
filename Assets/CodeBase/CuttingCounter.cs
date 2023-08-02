@@ -1,6 +1,8 @@
-﻿namespace CodeBase
+﻿using CodeBase.Characters;
+
+namespace CodeBase
 {
-    public class ClearCounter : BaseCounter
+    public class CuttingCounter : BaseCounter
     {
         public override void Interact(IKitchenObjectParent newParent)
         {
@@ -11,6 +13,14 @@
             }
             else if (!newParent.HasKitchenObject)
                 KitchenObject.SetParent(newParent);
+        }
+
+        public override void InteractAlternate(Player player)
+        {
+            if (HasKitchenObject)
+            {
+                KitchenObject.DestroySelf();
+            }
         }
     }
 }

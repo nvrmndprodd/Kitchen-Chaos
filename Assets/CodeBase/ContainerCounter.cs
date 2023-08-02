@@ -1,17 +1,18 @@
-﻿using UnityEngine;
+﻿using CodeBase.StaticData;
+using UnityEngine;
 
 namespace CodeBase
 {
     public class ContainerCounter : BaseCounter
     {
+        [SerializeField] private KitchenObjectStaticData kitchenObjectData;
         [SerializeField] private ContainerCounterVisual visual;
         
         public override void Interact(IKitchenObjectParent newParent)
         {
             if (newParent.HasKitchenObject) return;
-            
-            var kitchenObject = Instantiate(kitchenObjectData.prefab, counterTopContainer);
-            kitchenObject.SetParent(newParent);
+
+            GameFactory.CreateKitchenObject(kitchenObjectData, newParent);
             
             visual.StartOpenCloseAnimation();
         }

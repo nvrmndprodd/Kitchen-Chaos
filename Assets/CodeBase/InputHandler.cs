@@ -7,6 +7,7 @@ namespace CodeBase
     public class InputHandler : MonoBehaviour
     {
         public event EventHandler OnInteractAction;
+        public event EventHandler OnInteractAlternateAction;
         
         private PlayerInputActions _inputActions;
 
@@ -16,6 +17,7 @@ namespace CodeBase
             _inputActions.Player.Enable();
 
             _inputActions.Player.Interact.performed += InteractPerformed;
+            _inputActions.Player.InteractAlternate.performed += InteractAlternatePerformed;
         }
 
         public Vector2 GetMovementVectorNormalized() => 
@@ -23,5 +25,8 @@ namespace CodeBase
 
         private void InteractPerformed(InputAction.CallbackContext context) => 
             OnInteractAction?.Invoke(this, EventArgs.Empty);
+
+        private void InteractAlternatePerformed(InputAction.CallbackContext obj) => 
+            OnInteractAlternateAction?.Invoke(this, EventArgs.Empty);
     }
 }

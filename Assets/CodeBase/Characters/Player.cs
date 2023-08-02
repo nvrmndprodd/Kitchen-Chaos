@@ -38,6 +38,13 @@ namespace CodeBase.Characters
         private void Start()
         {
             inputHandler.OnInteractAction += OnInteract;
+            inputHandler.OnInteractAlternateAction += OnInteractAlternate;
+        }
+
+        private void OnInteractAlternate(object sender, EventArgs e)
+        {
+            if (_selectedCounter != null) 
+                _selectedCounter.InteractAlternate(this);
         }
 
         private void OnInteract(object sender, EventArgs e)

@@ -19,5 +19,11 @@ namespace CodeBase
             transform.parent = parent.KitchenObjectContainer;
             transform.localPosition = Vector3.zero;
         }
+
+        public void DestroySelf()
+        {
+            _parent.ClearKitchenObject();
+            Destroy(gameObject);
+        }
     }
 }
