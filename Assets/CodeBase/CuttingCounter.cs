@@ -8,7 +8,7 @@ namespace CodeBase
         {
             if (!HasKitchenObject && newParent.HasKitchenObject)
             {
-                if (newParent.HasKitchenObject) 
+                if (newParent.KitchenObject.CanBeSliced) 
                     newParent.KitchenObject.SetParent(this);
             }
             else if (!newParent.HasKitchenObject)
