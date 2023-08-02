@@ -19,7 +19,10 @@ namespace CodeBase.Counters.CuttingCounter
                 visual.EnableProgressBar();
             }
             else if (!newParent.HasKitchenObject)
+            {
                 KitchenObject.SetParent(newParent);
+                visual.DisableProgressBar();
+            }
         }
 
         public override void InteractAlternate(Player.Player player)
