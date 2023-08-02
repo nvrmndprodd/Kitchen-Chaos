@@ -1,7 +1,7 @@
 ﻿using CodeBase.StaticData;
 using UnityEngine;
 
-namespace CodeBase
+namespace CodeBase.KitchenObject
 {
     public class KitchenObject : MonoBehaviour
     {
@@ -11,6 +11,7 @@ namespace CodeBase
 
         public bool CanBeSliced => kitchenObjectData.canBeSliced;
         public KitchenObjectStaticData SlicedObject => kitchenObjectData.sliced;
+        public int SlicingProgressMaxValue => kitchenObjectData.slicingProgressMaxValue;
 
         public void SetParent(IKitchenObjectParent parent)
         {

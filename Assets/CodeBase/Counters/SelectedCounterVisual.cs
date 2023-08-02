@@ -1,7 +1,6 @@
-﻿using CodeBase.Characters;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace CodeBase
+namespace CodeBase.Counters
 {
     public class SelectedCounterVisual : MonoBehaviour
     {
@@ -9,9 +8,9 @@ namespace CodeBase
         [SerializeField] private GameObject[] visualGOs;
         
         private void Start() =>
-            Player.Instance.OnSelectedCounterChanged += OnSelectedCounterChanged;
+            Player.Player.Instance.OnSelectedCounterChanged += OnSelectedCounterChanged;
 
-        private void OnSelectedCounterChanged(object sender, Player.OnSelectedCounterChangedEventArgs e)
+        private void OnSelectedCounterChanged(object sender, Player.Player.OnSelectedCounterChangedEventArgs e)
         {
             if (e.selectedCounter == counter)
                 Show();

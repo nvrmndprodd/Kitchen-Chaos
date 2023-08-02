@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace CodeBase
+namespace CodeBase.Counters.ContainerCounter
 {
     public class ContainerCounterVisual : MonoBehaviour
     {

@@ -1,8 +1,11 @@
 using System;
+using CodeBase.Counters;
+using CodeBase.Infrastructure;
+using CodeBase.KitchenObject;
 using CodeBase.StaticData;
 using UnityEngine;
 
-namespace CodeBase.Characters
+namespace CodeBase.Player
 {
     public class Player : MonoBehaviour, IKitchenObjectParent
     {
@@ -24,7 +27,7 @@ namespace CodeBase.Characters
         private BaseCounter _selectedCounter;
 
         public Transform KitchenObjectContainer => kitchenObjectContainer;
-        public KitchenObject KitchenObject { get; private set; }
+        public KitchenObject.KitchenObject KitchenObject { get; private set; }
         public bool HasKitchenObject => KitchenObject != null;
 
         private void Awake()
@@ -162,7 +165,7 @@ namespace CodeBase.Characters
             });
         }
 
-        public void SetKitchenObject(KitchenObject kitchenObject) => 
+        public void SetKitchenObject(KitchenObject.KitchenObject kitchenObject) => 
             KitchenObject = kitchenObject;
 
         public void ClearKitchenObject() => 

@@ -1,4 +1,6 @@
-﻿namespace CodeBase
+﻿using CodeBase.KitchenObject;
+
+namespace CodeBase.Counters.ClearCounter
 {
     public class ClearCounter : BaseCounter
     {

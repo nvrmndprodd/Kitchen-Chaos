@@ -15,11 +15,11 @@ namespace CodeBase.Editor
             kitchenObjectStaticData.prefab = EditorGUILayout.ObjectField(
                     "Prefab",
                     kitchenObjectStaticData.prefab,
-                    typeof(KitchenObject),
+                    typeof(KitchenObject.KitchenObject),
                     false,
                     GUILayout.Height(EditorGUIUtility.singleLineHeight)
                 )
-                as KitchenObject;
+                as KitchenObject.KitchenObject;
 
             kitchenObjectStaticData.icon = EditorGUILayout.ObjectField(
                     "Icon",
@@ -50,6 +50,13 @@ namespace CodeBase.Editor
                         false,
                         GUILayout.Height(EditorGUIUtility.singleLineHeight))
                     as KitchenObjectStaticData;
+
+                kitchenObjectStaticData.slicingProgressMaxValue = EditorGUILayout.IntSlider(
+                        kitchenObjectStaticData.slicingProgressMaxValue,
+                        1, 
+                        5, 
+                        GUILayout.Height(EditorGUIUtility.singleLineHeight)
+                    );
             }
         }
     }

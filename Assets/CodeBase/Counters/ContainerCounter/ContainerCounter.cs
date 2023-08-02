@@ -1,7 +1,9 @@
-﻿using CodeBase.StaticData;
+﻿using CodeBase.Infrastructure;
+using CodeBase.KitchenObject;
+using CodeBase.StaticData;
 using UnityEngine;
 
-namespace CodeBase
+namespace CodeBase.Counters.ContainerCounter
 {
     public class ContainerCounter : BaseCounter
     {
