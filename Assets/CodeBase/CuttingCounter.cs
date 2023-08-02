@@ -19,9 +19,9 @@ namespace CodeBase
         {
             if (!HasKitchenObject || !KitchenObject.CanBeSliced) return;
 
-            var previousKitchenObject = KitchenObject;
-            GameFactory.CreateKitchenObject(KitchenObject.SlicedObject, this);
-            previousKitchenObject.DestroySelf();
+            var slicedObject = KitchenObject.SlicedObject;
+            KitchenObject.DestroySelf();
+            GameFactory.CreateKitchenObject(slicedObject, this);
         }
     }
 }
