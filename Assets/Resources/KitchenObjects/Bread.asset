@@ -15,3 +15,6 @@ MonoBehaviour:
   prefab: {fileID: -5945239667632901495, guid: d5c4d8f9c7ed7704288908362784fea8, type: 3}
   icon: {fileID: 21300000, guid: 77b28124b8bda494381c80bd5aa42c22, type: 3}
   objectName: Bread
+  canBeSliced: 0
+  sliced: {fileID: 0}
+  slicingProgressMaxValue: 1

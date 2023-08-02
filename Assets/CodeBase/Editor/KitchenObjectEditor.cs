@@ -1,5 +1,4 @@
-﻿using System;
-using CodeBase.StaticData;
+﻿using CodeBase.StaticData;
 using UnityEditor;
 using UnityEngine;
 
@@ -10,36 +9,9 @@ namespace CodeBase.Editor
     {
         public override void OnInspectorGUI()
         {
+            base.OnInspectorGUI();
+            
             var kitchenObjectStaticData = target as KitchenObjectStaticData;
-
-            kitchenObjectStaticData.prefab = EditorGUILayout.ObjectField(
-                    "Prefab",
-                    kitchenObjectStaticData.prefab,
-                    typeof(KitchenObject.KitchenObject),
-                    false,
-                    GUILayout.Height(EditorGUIUtility.singleLineHeight)
-                )
-                as KitchenObject.KitchenObject;
-
-            kitchenObjectStaticData.icon = EditorGUILayout.ObjectField(
-                    "Icon",
-                    kitchenObjectStaticData.icon,
-                    typeof(Sprite),
-                    false,
-                    GUILayout.Height(EditorGUIUtility.singleLineHeight)
-                )
-                as Sprite;
-
-            kitchenObjectStaticData.objectName = EditorGUILayout.TextField(
-                    "Object name",
-                    kitchenObjectStaticData.objectName,
-                    GUILayout.Height(EditorGUIUtility.singleLineHeight)
-            );
-
-            kitchenObjectStaticData.canBeSliced = EditorGUILayout.Toggle(
-                    "Can be sliced",
-                    kitchenObjectStaticData.canBeSliced
-            );
 
             if (kitchenObjectStaticData.canBeSliced)
             {
@@ -57,6 +29,8 @@ namespace CodeBase.Editor
                         5, 
                         GUILayout.Height(EditorGUIUtility.singleLineHeight)
                     );
+                
+                EditorUtility.SetDirty(target);
             }
         }
     }

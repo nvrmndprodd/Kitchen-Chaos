@@ -15,3 +15,6 @@ MonoBehaviour:
   prefab: {fileID: -5945239667632901495, guid: 046fccc169dad404c827c3a02953beef, type: 3}
   icon: {fileID: 21300000, guid: 91e8fe3de9249fc44b7bdd8050062896, type: 3}
   objectName: Tomato
+  canBeSliced: 1
+  sliced: {fileID: 11400000, guid: e9a156c83f164fd4f8880f0abf0f8a48, type: 2}
+  slicingProgressMaxValue: 3

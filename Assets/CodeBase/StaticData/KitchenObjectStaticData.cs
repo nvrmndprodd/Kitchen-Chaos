@@ -9,7 +9,8 @@ namespace CodeBase.StaticData
         public Sprite icon;
         public string objectName;
         public bool canBeSliced;
-        public KitchenObjectStaticData sliced;
-        public int slicingProgressMaxValue;
+
+        [HideInInspector] public KitchenObjectStaticData sliced;
+        [HideInInspector] public int slicingProgressMaxValue;
     }
 }
