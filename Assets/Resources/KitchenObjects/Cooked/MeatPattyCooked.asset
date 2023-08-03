@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6181840eb2a94924a56108ec6fdd3c5b, type: 3}
-  m_Name: MeatPattyUncooked
+  m_Name: MeatPattyCooked
   m_EditorClassIdentifier: 
-  prefab: {fileID: -5945239667632901495, guid: e5c6181490fcf4c40bae7036c9058c55, type: 3}
-  icon: {fileID: 21300000, guid: aa1bacc24dde76e47b2ec0dd4e82385b, type: 3}
-  objectName: MeatPattyUncooked
+  prefab: {fileID: -5945239667632901495, guid: ddec9a7c89f0a714ba7fa4811ea21b50, type: 3}
+  icon: {fileID: 21300000, guid: f1f50c7ef90b19741b26f2040806cf56, type: 3}
+  objectName: MeatPattyCooked
   canBeSliced: 0
   sliced: {fileID: 0}
   slicingProgressMaxValue: 0
-  canBeCooked: 1
-  cooked: {fileID: 11400000, guid: 86614071e2277084689a3a9d71a66cc8, type: 2}
-  burned: {fileID: 11400000, guid: 165d8c19fa9eb1445a4cd6d3193c844f, type: 2}
+  canBeCooked: 0
+  cooked: {fileID: 0}
+  burned: {fileID: 0}

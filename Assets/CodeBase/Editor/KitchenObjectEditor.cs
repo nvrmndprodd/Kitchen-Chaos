@@ -32,6 +32,27 @@ namespace CodeBase.Editor
                 
                 EditorUtility.SetDirty(target);
             }
+
+            if (kitchenObjectStaticData.canBeCooked)
+            {
+                kitchenObjectStaticData.cooked = EditorGUILayout.ObjectField(
+                        "Cooked",
+                        kitchenObjectStaticData.cooked,
+                        typeof(KitchenObjectStaticData),
+                        false,
+                        GUILayout.Height(EditorGUIUtility.singleLineHeight))
+                    as KitchenObjectStaticData;
+                
+                kitchenObjectStaticData.burned = EditorGUILayout.ObjectField(
+                        "Burned",
+                        kitchenObjectStaticData.burned,
+                        typeof(KitchenObjectStaticData),
+                        false,
+                        GUILayout.Height(EditorGUIUtility.singleLineHeight))
+                    as KitchenObjectStaticData;
+                
+                EditorUtility.SetDirty(target);
+            }
         }
     }
 }
