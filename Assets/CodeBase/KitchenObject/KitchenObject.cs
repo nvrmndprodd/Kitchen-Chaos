@@ -9,9 +9,7 @@ namespace CodeBase.KitchenObject
 
         private IKitchenObjectParent _parent;
 
-        public bool CanBeSliced => kitchenObjectData.canBeSliced;
-        public KitchenObjectStaticData SlicedObject => kitchenObjectData.sliced;
-        public int SlicingProgressMaxValue => kitchenObjectData.slicingProgressMaxValue;
+        public KitchenObjectStaticData Data => kitchenObjectData;
 
         public void SetParent(IKitchenObjectParent parent)
         {

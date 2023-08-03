@@ -50,6 +50,20 @@ namespace CodeBase.Editor
                         false,
                         GUILayout.Height(EditorGUIUtility.singleLineHeight))
                     as KitchenObjectStaticData;
+
+                kitchenObjectStaticData.cookDuration = EditorGUILayout.IntSlider(
+                        kitchenObjectStaticData.cookDuration,
+                        1,
+                        5,
+                        GUILayout.Height(EditorGUIUtility.singleLineHeight)
+                    );
+
+                kitchenObjectStaticData.burnDuration = EditorGUILayout.IntSlider(
+                        kitchenObjectStaticData.burnDuration,
+                        1, 
+                        5, 
+                        GUILayout.Height(EditorGUIUtility.singleLineHeight)
+                    );
                 
                 EditorUtility.SetDirty(target);
             }

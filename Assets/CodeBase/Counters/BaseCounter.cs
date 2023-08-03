@@ -12,7 +12,7 @@ namespace CodeBase.Counters
         public bool HasKitchenObject => KitchenObject is not null;
         
         public abstract void Interact(IKitchenObjectParent newParent);
-        public virtual void InteractAlternate(Player.Player player) {}
+        public virtual void InteractAlternate() {}
         
         public void SetKitchenObject(KitchenObject.KitchenObject kitchenObject) => 
             KitchenObject = kitchenObject;

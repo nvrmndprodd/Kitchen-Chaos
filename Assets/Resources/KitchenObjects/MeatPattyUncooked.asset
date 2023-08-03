@@ -21,3 +21,5 @@ MonoBehaviour:
   canBeCooked: 1
   cooked: {fileID: 11400000, guid: 86614071e2277084689a3a9d71a66cc8, type: 2}
   burned: {fileID: 11400000, guid: 165d8c19fa9eb1445a4cd6d3193c844f, type: 2}
+  cookDuration: 2
+  burnDuration: 5

@@ -5,7 +5,7 @@ using CodeBase.KitchenObject;
 using CodeBase.StaticData;
 using UnityEngine;
 
-namespace CodeBase.Player
+namespace CodeBase.PlayerScripts
 {
     public class Player : MonoBehaviour, IKitchenObjectParent
     {
@@ -47,7 +47,7 @@ namespace CodeBase.Player
         private void OnInteractAlternate(object sender, EventArgs e)
         {
             if (_selectedCounter != null) 
-                _selectedCounter.InteractAlternate(this);
+                _selectedCounter.InteractAlternate();
         }
 
         private void OnInteract(object sender, EventArgs e)

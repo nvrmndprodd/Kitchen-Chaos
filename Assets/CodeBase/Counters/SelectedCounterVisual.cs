@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using CodeBase.PlayerScripts;
+using UnityEngine;
 
 namespace CodeBase.Counters
 {
@@ -8,9 +9,9 @@ namespace CodeBase.Counters
         [SerializeField] private GameObject[] visualGOs;
         
         private void Start() =>
-            Player.Player.Instance.OnSelectedCounterChanged += OnSelectedCounterChanged;
+            Player.Instance.OnSelectedCounterChanged += OnSelectedCounterChanged;
 
-        private void OnSelectedCounterChanged(object sender, Player.Player.OnSelectedCounterChangedEventArgs e)
+        private void OnSelectedCounterChanged(object sender, Player.OnSelectedCounterChangedEventArgs e)
         {
             if (e.selectedCounter == counter)
                 Show();

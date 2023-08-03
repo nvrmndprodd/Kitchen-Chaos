@@ -1,5 +1,6 @@
 ﻿using CodeBase.Infrastructure;
 using CodeBase.KitchenObject;
+using CodeBase.StaticData;
 using UnityEngine;
 
 namespace CodeBase.Counters.CuttingCounter
@@ -7,33 +8,35 @@ namespace CodeBase.Counters.CuttingCounter
     public class CuttingCounter : BaseCounter
     {
         [SerializeField] private CuttingCounterVisual visual;
-        
+
+        private KitchenObjectStaticData _uncutObjectData;
         private int _cuttingProgress;
 
         public override void Interact(IKitchenObjectParent newParent)
         {
-            if (!HasKitchenObject && newParent.HasKitchenObject && newParent.KitchenObject.CanBeSliced)
+            if (!HasKitchenObject && newParent.HasKitchenObject && newParent.KitchenObject.Data.canBeSliced)
             {
                 _cuttingProgress = 0;
                 newParent.KitchenObject.SetParent(this);
+                _uncutObjectData = KitchenObject.Data;
                 visual.EnableProgressBar();
             }
-            else if (!newParent.HasKitchenObject)
+            else if (!newParent.HasKitchenObject && HasKitchenObject)
             {
                 KitchenObject.SetParent(newParent);
                 visual.DisableProgressBar();
             }
         }
 
-        public override void InteractAlternate(Player.Player player)
+        public override void InteractAlternate()
         {
-            if (!HasKitchenObject || !KitchenObject.CanBeSliced) 
+            if (!HasKitchenObject || !_uncutObjectData.canBeSliced) 
                 return;
 
             ++_cuttingProgress;
             UpdateVisual();
 
-            if (_cuttingProgress < KitchenObject.SlicingProgressMaxValue) 
+            if (_cuttingProgress < _uncutObjectData.slicingProgressMaxValue) 
                 return;
             
             ReplaceKitchenObjectWithSliced();
@@ -42,15 +45,14 @@ namespace CodeBase.Counters.CuttingCounter
 
         private void UpdateVisual()
         {
-            visual.UpdateProgress(_cuttingProgress, KitchenObject.SlicingProgressMaxValue);
+            visual.UpdateProgress(_cuttingProgress, _uncutObjectData.slicingProgressMaxValue);
             visual.StartCuttingAnimation();
         }
 
         private void ReplaceKitchenObjectWithSliced()
         {
-            var slicedObject = KitchenObject.SlicedObject;
             KitchenObject.DestroySelf();
-            GameFactory.CreateKitchenObject(slicedObject, this);
+            GameFactory.CreateKitchenObject(_uncutObjectData.sliced, this);
         }
     }
 }

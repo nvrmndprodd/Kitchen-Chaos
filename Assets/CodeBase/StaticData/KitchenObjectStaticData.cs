@@ -18,5 +18,7 @@ namespace CodeBase.StaticData
 
         [HideInInspector] public KitchenObjectStaticData cooked;
         [HideInInspector] public KitchenObjectStaticData burned;
+        [HideInInspector] public int cookDuration;
+        [HideInInspector] public int burnDuration;
     }
 }

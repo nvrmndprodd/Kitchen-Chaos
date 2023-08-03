@@ -6,12 +6,10 @@ namespace CodeBase.Infrastructure
 {
     public static class GameFactory
     {
-        public static KitchenObject.KitchenObject CreateKitchenObject(KitchenObjectStaticData data, IKitchenObjectParent parent)
+        public static void CreateKitchenObject(KitchenObjectStaticData data, IKitchenObjectParent parent)
         {
             var kitchenObject = Object.Instantiate(data.prefab, parent.KitchenObjectContainer);
             kitchenObject.SetParent(parent);
-
-            return kitchenObject;
         }
     }
 }
