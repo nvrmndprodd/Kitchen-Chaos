@@ -20,11 +20,8 @@ namespace CodeBase.Counters
         public void ClearKitchenObject() => 
             KitchenObject = null;
 
-        protected bool TryToMoveIngredientToThePlate(IKitchenObjectParent newParent)
+        protected bool TryToMoveIngredientToThePlate(PlateKitchenObject plate)
         {
-            if (newParent.KitchenObject is not PlateKitchenObject plate) 
-                return false;
-
             if (!plate.TryAddIngredient(KitchenObject.Data)) 
                 return false;
             

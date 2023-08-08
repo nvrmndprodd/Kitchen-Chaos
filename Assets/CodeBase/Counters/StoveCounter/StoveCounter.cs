@@ -62,8 +62,20 @@ namespace CodeBase.Counters.StoveCounter
             {
                 if (newParent.HasKitchenObject)
                 {
-                    if (TryToMoveIngredientToThePlate(newParent)) 
-                        SwitchState(State.Idle);
+                    if (newParent.KitchenObject is PlateKitchenObject plate)
+                    {
+                        if (plate.TryAddIngredient(KitchenObject.Data))
+                        {
+                            KitchenObject.DestroySelf();
+                            SwitchState(State.Idle);
+                        }
+                    }
+                    
+                    if (KitchenObject is PlateKitchenObject p)
+                    {
+                        if (p.TryAddIngredient(newParent.KitchenObject.Data))
+                            newParent.KitchenObject.DestroySelf();
+                    }
                 }
                 else
                 {

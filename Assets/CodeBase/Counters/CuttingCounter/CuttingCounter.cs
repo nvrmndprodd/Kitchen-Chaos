@@ -28,12 +28,21 @@ namespace CodeBase.Counters.CuttingCounter
             {
                 if (newParent.HasKitchenObject)
                 {
-                    TryToMoveIngredientToThePlate(newParent);
+                    if (newParent.KitchenObject is PlateKitchenObject plate)
+                    {
+                        if (plate.TryAddIngredient(KitchenObject.Data))
+                            KitchenObject.DestroySelf();
+                    }
+                    
+                    if (KitchenObject is PlateKitchenObject p)
+                    {
+                        if (p.TryAddIngredient(newParent.KitchenObject.Data))
+                            newParent.KitchenObject.DestroySelf();
+                    }
                 }
-                else 
+                else
                 {
                     KitchenObject.SetParent(newParent);
-                    visual.DisableProgressBar();
                 }
             }
         }

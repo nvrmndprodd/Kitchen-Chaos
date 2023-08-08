@@ -17,11 +17,21 @@ namespace CodeBase.Counters.ClearCounter
                     
                 }
             }
-            else if (HasKitchenObject)
+            else
             {
                 if (newParent.HasKitchenObject)
                 {
-                    TryToMoveIngredientToThePlate(newParent);
+                    if (newParent.KitchenObject is PlateKitchenObject plate)
+                    {
+                        if (plate.TryAddIngredient(KitchenObject.Data))
+                            KitchenObject.DestroySelf();
+                    }
+                    
+                    if (KitchenObject is PlateKitchenObject p)
+                    {
+                        if (p.TryAddIngredient(newParent.KitchenObject.Data))
+                            newParent.KitchenObject.DestroySelf();
+                    }
                 }
                 else
                 {
