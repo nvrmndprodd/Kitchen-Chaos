@@ -1,5 +1,5 @@
 ﻿using CodeBase.Infrastructure;
-using CodeBase.KitchenObject;
+using CodeBase.KitchenObjects;
 using CodeBase.StaticData;
 using UnityEngine;
 

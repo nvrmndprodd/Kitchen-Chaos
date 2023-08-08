@@ -1,7 +1,7 @@
 using System;
 using CodeBase.Counters;
 using CodeBase.Infrastructure;
-using CodeBase.KitchenObject;
+using CodeBase.KitchenObjects;
 using CodeBase.StaticData;
 using UnityEngine;
 
@@ -27,7 +27,7 @@ namespace CodeBase.PlayerScripts
         private BaseCounter _selectedCounter;
 
         public Transform KitchenObjectContainer => kitchenObjectContainer;
-        public KitchenObject.KitchenObject KitchenObject { get; private set; }
+        public KitchenObject KitchenObject { get; private set; }
         public bool HasKitchenObject => KitchenObject != null;
 
         private void Awake()
@@ -165,7 +165,7 @@ namespace CodeBase.PlayerScripts
             });
         }
 
-        public void SetKitchenObject(KitchenObject.KitchenObject kitchenObject) => 
+        public void SetKitchenObject(KitchenObject kitchenObject) => 
             KitchenObject = kitchenObject;
 
         public void ClearKitchenObject() => 

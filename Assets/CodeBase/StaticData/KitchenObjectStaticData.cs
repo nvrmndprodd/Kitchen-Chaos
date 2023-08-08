@@ -1,11 +1,12 @@
-﻿using UnityEngine;
+﻿using CodeBase.KitchenObjects;
+using UnityEngine;
 
 namespace CodeBase.StaticData
 {
     [CreateAssetMenu(menuName = "StaticData/KitchenObject", fileName = "KitchenObjectStaticData")]
     public class KitchenObjectStaticData : ScriptableObject
     {
-        public KitchenObject.KitchenObject prefab;
+        public KitchenObject prefab;
         public Sprite icon;
         public string objectName;
         

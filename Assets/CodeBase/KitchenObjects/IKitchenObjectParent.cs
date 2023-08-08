@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace CodeBase.KitchenObject
+namespace CodeBase.KitchenObjects
 {
     public interface IKitchenObjectParent
     {

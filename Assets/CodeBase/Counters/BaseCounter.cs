@@ -1,4 +1,4 @@
-﻿using CodeBase.KitchenObject;
+﻿using CodeBase.KitchenObjects;
 using UnityEngine;
 
 namespace CodeBase.Counters
@@ -8,13 +8,13 @@ namespace CodeBase.Counters
         [SerializeField] protected Transform counterTopContainer;
         
         public Transform KitchenObjectContainer => counterTopContainer;
-        public KitchenObject.KitchenObject KitchenObject { get; protected set; }
+        public KitchenObject KitchenObject { get; protected set; }
         public bool HasKitchenObject => KitchenObject is not null;
         
         public abstract void Interact(IKitchenObjectParent newParent);
         public virtual void InteractAlternate() {}
         
-        public void SetKitchenObject(KitchenObject.KitchenObject kitchenObject) => 
+        public void SetKitchenObject(KitchenObject kitchenObject) => 
             KitchenObject = kitchenObject;
 
         public void ClearKitchenObject() => 

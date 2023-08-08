@@ -1,4 +1,4 @@
-﻿using CodeBase.KitchenObject;
+﻿using CodeBase.KitchenObjects;
 
 namespace CodeBase.Counters.TrashCounter
 {

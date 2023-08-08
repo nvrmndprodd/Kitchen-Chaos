@@ -1,7 +1,7 @@
 ﻿using CodeBase.StaticData;
 using UnityEngine;
 
-namespace CodeBase.KitchenObject
+namespace CodeBase.KitchenObjects
 {
     public class KitchenObject : MonoBehaviour
     {
