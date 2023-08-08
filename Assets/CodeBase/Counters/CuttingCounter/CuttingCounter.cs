@@ -14,17 +14,27 @@ namespace CodeBase.Counters.CuttingCounter
 
         public override void Interact(IKitchenObjectParent newParent)
         {
-            if (!HasKitchenObject && newParent.HasKitchenObject && newParent.KitchenObject.Data.canBeSliced)
+            if (!HasKitchenObject)
             {
-                _cuttingProgress = 0;
-                newParent.KitchenObject.SetParent(this);
-                _uncutObjectData = KitchenObject.Data;
-                visual.EnableProgressBar();
+                if (newParent.HasKitchenObject && newParent.KitchenObject.Data.canBeSliced)
+                {
+                    _cuttingProgress = 0;
+                    newParent.KitchenObject.SetParent(this);
+                    _uncutObjectData = KitchenObject.Data;
+                    visual.EnableProgressBar();
+                }
             }
-            else if (!newParent.HasKitchenObject && HasKitchenObject)
+            else
             {
-                KitchenObject.SetParent(newParent);
-                visual.DisableProgressBar();
+                if (newParent.HasKitchenObject)
+                {
+                    TryToMoveIngredientToThePlate(newParent);
+                }
+                else 
+                {
+                    KitchenObject.SetParent(newParent);
+                    visual.DisableProgressBar();
+                }
             }
         }
 

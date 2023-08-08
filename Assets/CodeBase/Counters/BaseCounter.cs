@@ -19,5 +19,18 @@ namespace CodeBase.Counters
 
         public void ClearKitchenObject() => 
             KitchenObject = null;
+
+        protected bool TryToMoveIngredientToThePlate(IKitchenObjectParent newParent)
+        {
+            if (newParent.KitchenObject is not PlateKitchenObject plate) 
+                return false;
+
+            if (!plate.TryAddIngredient(KitchenObject.Data)) 
+                return false;
+            
+            KitchenObject.DestroySelf();
+            return true;
+
+        }
     }
 }

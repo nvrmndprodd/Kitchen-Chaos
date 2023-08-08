@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6181840eb2a94924a56108ec6fdd3c5b, type: 3}
+  m_Script: {fileID: 11500000, guid: 19de178f528e4fdeb96ccafcee78e864, type: 3}
   m_Name: Plate
   m_EditorClassIdentifier: 
-  prefab: {fileID: -5945239667632901495, guid: dbcd69f61a934114187c584e77e7746a, type: 3}
+  prefab: {fileID: 6328572418733001074, guid: dbcd69f61a934114187c584e77e7746a, type: 3}
   icon: {fileID: 21300000, guid: 3928afb5321bb3d489bbd4ac581b29a2, type: 3}
   objectName: Plate
   canBeSliced: 0
@@ -23,3 +23,4 @@ MonoBehaviour:
   burned: {fileID: 0}
   cookDuration: 0
   burnDuration: 0
+  canBePutOnPlate: []

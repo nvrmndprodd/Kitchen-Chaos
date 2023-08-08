@@ -47,10 +47,33 @@ namespace CodeBase.Counters.StoveCounter
 
         public override void Interact(IKitchenObjectParent newParent)
         {
-            if (CanPlaceKitchenObject(newParent))
-                PlaceNewKitchenObject(newParent);
-            else if (CanGivePlayerKitchenObject(newParent)) 
-                GivePlayerKitchenObject(newParent);
+            if (!HasKitchenObject)
+            {
+                if (newParent.HasKitchenObject && newParent.KitchenObject.Data.canBeCooked)
+                {
+                    PlaceNewKitchenObject(newParent);
+                }
+                else
+                {
+                    
+                }
+            }
+            else
+            {
+                if (newParent.HasKitchenObject)
+                {
+                    if (TryToMoveIngredientToThePlate(newParent)) 
+                        SwitchState(State.Idle);
+                }
+                else
+                {
+                    GivePlayerKitchenObject(newParent);
+                }
+            }
+            // if (CanPlaceKitchenObject(newParent))
+            //     PlaceNewKitchenObject(newParent);
+            // else if (CanGivePlayerKitchenObject(newParent)) 
+            //     GivePlayerKitchenObject(newParent);
         }
 
         private bool CanPlaceKitchenObject(IKitchenObjectParent newParent) => 
