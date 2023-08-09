@@ -6,7 +6,7 @@ namespace CodeBase.KitchenObjects
 {
     public class PlateKitchenObject : KitchenObject
     {
-        [SerializeField] private PlateCompleteVisual completeVisual;
+        [SerializeField] private PlateVisualComponent visual;
         
         private List<KitchenObjectStaticData> _kitchenObjectsData;
 
@@ -24,7 +24,7 @@ namespace CodeBase.KitchenObjects
             else
             {
                 _kitchenObjectsData.Add(data);
-                completeVisual.OnIngredientAdded(data);
+                visual.OnIngredientAdded(data);
                 return true;
             }
         }
