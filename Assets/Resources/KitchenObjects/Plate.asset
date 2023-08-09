@@ -23,4 +23,10 @@ MonoBehaviour:
   burned: {fileID: 0}
   cookDuration: 0
   burnDuration: 0
-  canBePutOnPlate: []
+  canBePutOnPlate:
+  - {fileID: 11400000, guid: 165d8c19fa9eb1445a4cd6d3193c844f, type: 2}
+  - {fileID: 11400000, guid: 86614071e2277084689a3a9d71a66cc8, type: 2}
+  - {fileID: 11400000, guid: 99cbea22b38bc404f946765ea73b36d4, type: 2}
+  - {fileID: 11400000, guid: 266bc98a06d63a643b3ce82a2ae2674b, type: 2}
+  - {fileID: 11400000, guid: e9a156c83f164fd4f8880f0abf0f8a48, type: 2}
+  - {fileID: 11400000, guid: 9c90c799f330cc84c97a21cfdad9e27c, type: 2}

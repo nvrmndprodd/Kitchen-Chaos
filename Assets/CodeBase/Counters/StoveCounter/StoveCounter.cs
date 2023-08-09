@@ -82,10 +82,6 @@ namespace CodeBase.Counters.StoveCounter
                     GivePlayerKitchenObject(newParent);
                 }
             }
-            // if (CanPlaceKitchenObject(newParent))
-            //     PlaceNewKitchenObject(newParent);
-            // else if (CanGivePlayerKitchenObject(newParent)) 
-            //     GivePlayerKitchenObject(newParent);
         }
 
         private bool CanPlaceKitchenObject(IKitchenObjectParent newParent) => 

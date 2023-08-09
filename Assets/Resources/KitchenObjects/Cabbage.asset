@@ -18,3 +18,8 @@ MonoBehaviour:
   canBeSliced: 1
   sliced: {fileID: 11400000, guid: 99cbea22b38bc404f946765ea73b36d4, type: 2}
   slicingProgressMaxValue: 5
+  canBeCooked: 0
+  cooked: {fileID: 0}
+  burned: {fileID: 0}
+  cookDuration: 0
+  burnDuration: 0

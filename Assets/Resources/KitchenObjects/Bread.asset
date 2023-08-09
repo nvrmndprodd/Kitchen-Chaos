@@ -21,3 +21,5 @@ MonoBehaviour:
   canBeCooked: 0
   cooked: {fileID: 0}
   burned: {fileID: 0}
+  cookDuration: 0
+  burnDuration: 0

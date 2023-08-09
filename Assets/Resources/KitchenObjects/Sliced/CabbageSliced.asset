@@ -18,3 +18,8 @@ MonoBehaviour:
   canBeSliced: 0
   sliced: {fileID: 0}
   slicingProgressMaxValue: 0
+  canBeCooked: 0
+  cooked: {fileID: 0}
+  burned: {fileID: 0}
+  cookDuration: 0
+  burnDuration: 0

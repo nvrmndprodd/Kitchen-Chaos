@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 740749f325da40dd9b7d29dcdd60ab13, type: 3}
   m_Name: PlatesCounterStaticData
   m_EditorClassIdentifier: 
-  plateData: {fileID: 11400000, guid: 68341cc794a8c714ea0eb11b3e182fad, type: 2}
+  plateData: {fileID: 11400000, guid: 1eacbae9157e91a42b844936564f71c6, type: 2}
   spawnPlateTimer: 4
+  spawnedPlatesMax: 3
