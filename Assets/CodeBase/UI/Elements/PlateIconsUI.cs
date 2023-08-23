@@ -5,7 +5,7 @@ namespace CodeBase.UI.Elements
 {
     public class PlateIconsUI : MonoBehaviour
     {
-        [SerializeField] private PlateSingleIconUI singleIconPrefab;
+        [SerializeField] private IconUI singleIconPrefab;
 
         public void OnIngredientAdded(KitchenObjectStaticData data)
         {

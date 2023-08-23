@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 3366788712001524199}
   - component: {fileID: 6885078004980982818}
   - component: {fileID: 3795457431896644678}
-  - component: {fileID: 5163802797706096048}
   m_Layer: 0
   m_Name: PlateIconsUI
   m_TagString: Untagged
@@ -143,19 +142,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   singleIconPrefab: {fileID: 2182985916708657101, guid: 5ee01d1d00cca4b40a97d7637dbe0e43,
     type: 3}
---- !u!114 &5163802797706096048
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2104720155642234212}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 386d0d97f2634d909de2678cc3be5631, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mode: 2
 --- !u!1 &2860095389977565192
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,21 +12,19 @@ namespace CodeBase.KitchenObjects
 
         private PlateStaticData PlateData => Data as PlateStaticData;
 
+        public IReadOnlyList<KitchenObjectStaticData> KitchenObjects => _kitchenObjectsData;
+
         private void Awake() => 
             _kitchenObjectsData = new List<KitchenObjectStaticData>();
 
         public bool TryAddIngredient(KitchenObjectStaticData data)
         {
             if (_kitchenObjectsData.Contains(data) || !PlateData.IsValidIngredient(data))
-            {
                 return false;
-            }
-            else
-            {
-                _kitchenObjectsData.Add(data);
-                visual.OnIngredientAdded(data);
-                return true;
-            }
+
+            _kitchenObjectsData.Add(data);
+            visual.OnIngredientAdded(data);
+            return true;
         }
     }
 }

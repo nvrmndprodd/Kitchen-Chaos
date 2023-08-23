@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1d6c460712b4193b6def8daeb7bad07, type: 3}
+  m_Name: RecipeServiceStaticData
+  m_EditorClassIdentifier: 
+  availableRecipes:
+  - {fileID: 11400000, guid: 4c1aec243c5986946a53a90b35418eb9, type: 2}
+  - {fileID: 11400000, guid: 660be3fce6a56f44ebd08d8ff314b55c, type: 2}
+  - {fileID: 11400000, guid: 2918b6503746f22438d32d601f7acdd9, type: 2}
+  spawnRecipeTimer: 4
+  pendingRecipesMax: 4
